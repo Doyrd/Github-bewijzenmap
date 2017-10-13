@@ -1,0 +1,28 @@
+﻿using UnityEngine;
+
+public class ObjectGenerator : MonoBehaviour
+{
+    public GameObject thePlatform;
+    public Transform theGenerationPoint;
+
+    public float distanceBetween;
+    private float platformWidth;
+
+    public float distanceBetweenMinimum;
+    public float distanceBetweenMaximum;
+
+	void Start ()
+    {
+        platformWidth = thePlatform.GetComponent<BoxCollider2D>().size.x;
+	}
+	
+	void Update ()
+    {
+        if(transform.position.x < theGenerationPoint.position.x)
+        {
+            distanceBetween = Random.Range(distanceBetweenMinimum, distanceBetweenMaximum);
+            transform.position = new Vector3(transform.position.x + platformWidth + distanceBetween, transform.position.y, transform.position.z);
+            Instantiate(thePlatform, transform.position, transform.rotation);
+        }	
+	}
+}

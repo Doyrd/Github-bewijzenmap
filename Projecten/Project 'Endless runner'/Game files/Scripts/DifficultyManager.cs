@@ -1,0 +1,22 @@
+﻿using UnityEngine;
+
+public class DifficultyManager : MonoBehaviour
+{
+    public AudioSource buttonSound;
+    public int difficultyValue;
+    
+    public void Hardmode()
+    {
+        difficultyValue = 2;
+    }
+
+    public void Normalmode()
+    {
+        difficultyValue = 1;
+    }
+
+    public void Easymode()
+    {
+        difficultyValue = 0;
+    }
+}
