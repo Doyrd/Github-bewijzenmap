@@ -1,0 +1,29 @@
+using UnityEngine;
+
+public class MusicCollection : MonoBehaviour
+{
+    public GameVariables gameVariables;
+    private AudioSource audioSource;
+    public SoundManager soundManager;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        gameVariables = GameObject.Find("GameController").GetComponent<GameVariables>();
+    }
+    void Start()
+    {
+        audioSource.clip = gameVariables.resourceClips[gameVariables.selectedMusic];
+        audioSource.Play();
+    }
+    void Update()
+    {
+        audioSource.volume = soundManager.theAudioVolumeValue;
+    }
+
+    public AudioClip GetRandomClip()
+    {   
+        int rIndex = Random.Range(0, gameVariables.resourceClips.Length);
+        return gameVariables.resourceClips[rIndex];
+    }
+}
